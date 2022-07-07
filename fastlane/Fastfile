@@ -1,0 +1,80 @@
+# This file contains the fastlane.tools configuration
+# You can find the documentation at https://docs.fastlane.tools
+#
+# For a list of all available actions, check out
+#
+#     https://docs.fastlane.tools/actions
+#
+# For a list of all available plugins, check out
+#
+#     https://docs.fastlane.tools/plugins/available-plugins
+#
+
+# Uncomment the line if you want fastlane to automatically update itself
+# update_fastlane
+
+default_platform(:ios)
+
+platform :ios do
+  desc "静态库或者动态库打包"
+  lane :xc do
+    #build for iphonesimulator
+    customScheme = "ExcelReader"
+    xcodebuild(
+      scheme: customScheme, #打包的Target 需要设置
+      configuration: "Release",#打包的模式 需要设置
+      silent: false,
+      clean: true, #打包前清理
+      build: true,
+      build_path: "./build",
+      xcargs: "-sdk iphonesimulator ARCHS='x86_64'"
+    )
+    #build for iphone
+    xcodebuild(
+      scheme: customScheme, #打包的Target 需要设置
+      configuration: "Release", #打包的模式 需要设置
+      silent: false, 
+      clean: true, #打包前清理
+      build: true, #打包环境
+      build_path: "./build",
+      xcargs: "-sdk iphoneos ARCHS='arm64'",
+    )
+    # 上面参数文档http://docs.fastlane.tools/actions/gym/#parameters
+
+    # 获取当前路径
+    code_path = File.expand_path("..", File.dirname(__FILE__)).to_s
+    target = customScheme
+    # SDK路径
+    iphonesimulator_path = "#{code_path}/build/Release-iphonesimulator/#{target}.framework"
+    iphoneos_path = "#{code_path}/build/Release-iphoneos/#{target}.framework"
+    # 定义输出的xcframework路径
+    out_path = "#{code_path}/build/xcframework/#{target}.xcframework"
+
+    # 合并成xcframework
+    # 文档http://docs.fastlane.tools/actions/create_xcframework/
+    create_xcframework(
+      frameworks:[iphonesimulator_path,iphoneos_path], # 两个Framework
+      output:out_path # 输出路径
+    )
+
+  end
+end
+
+
+desc "打包SDK"
+lane :buildSDK do
+  customScheme = "ExcelReader"
+  xcbuild(     
+      scheme: customScheme,
+      clean: true,
+      configuration: "Release",
+      xcargs: "-sdk iphonesimulator ARCHS='x86_64' "
+  )
+
+  xcbuild(
+      scheme: customScheme,
+      clean: true,
+      configuration: "Release",
+      xcargs: "-sdk iphoneos ARCHS='arm64'"
+  )
+end

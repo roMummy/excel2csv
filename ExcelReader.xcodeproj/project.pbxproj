@@ -1,0 +1,884 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		5A68B0282876855B0088D4BF /* IntBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A68AFE12876855B0088D4BF /* IntBox.swift */; };
+		5A68B0292876855B0088D4BF /* UnkeyedBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A68AFE22876855B0088D4BF /* UnkeyedBox.swift */; };
+		5A68B02A2876855B0088D4BF /* ValueBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A68AFE32876855B0088D4BF /* ValueBox.swift */; };
+		5A68B02B2876855B0088D4BF /* DateBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A68AFE42876855B0088D4BF /* DateBox.swift */; };
+		5A68B02C2876855B0088D4BF /* FloatBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A68AFE52876855B0088D4BF /* FloatBox.swift */; };
+		5A68B02D2876855B0088D4BF /* KeyedBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A68AFE62876855B0088D4BF /* KeyedBox.swift */; };
+		5A68B02E2876855B0088D4BF /* Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A68AFE72876855B0088D4BF /* Box.swift */; };
+		5A68B02F2876855B0088D4BF /* NullBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A68AFE82876855B0088D4BF /* NullBox.swift */; };
+		5A68B0302876855B0088D4BF /* UIntBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A68AFE92876855B0088D4BF /* UIntBox.swift */; };
+		5A68B0312876855B0088D4BF /* URLBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A68AFEA2876855B0088D4BF /* URLBox.swift */; };
+		5A68B0322876855B0088D4BF /* ChoiceBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A68AFEB2876855B0088D4BF /* ChoiceBox.swift */; };
+		5A68B0332876855B0088D4BF /* SharedBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A68AFEC2876855B0088D4BF /* SharedBox.swift */; };
+		5A68B0342876855B0088D4BF /* DecimalBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A68AFED2876855B0088D4BF /* DecimalBox.swift */; };
+		5A68B0352876855B0088D4BF /* SingleKeyedBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A68AFEE2876855B0088D4BF /* SingleKeyedBox.swift */; };
+		5A68B0362876855B0088D4BF /* DataBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A68AFEF2876855B0088D4BF /* DataBox.swift */; };
+		5A68B0372876855B0088D4BF /* DoubleBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A68AFF02876855B0088D4BF /* DoubleBox.swift */; };
+		5A68B0382876855B0088D4BF /* BoolBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A68AFF12876855B0088D4BF /* BoolBox.swift */; };
+		5A68B0392876855B0088D4BF /* StringBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A68AFF22876855B0088D4BF /* StringBox.swift */; };
+		5A68B03A2876855B0088D4BF /* XMLHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A68AFF32876855B0088D4BF /* XMLHeader.swift */; };
+		5A68B03B2876855B0088D4BF /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A68AFF42876855B0088D4BF /* String+Extensions.swift */; };
+		5A68B03C2876855B0088D4BF /* XMLStackParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A68AFF52876855B0088D4BF /* XMLStackParser.swift */; };
+		5A68B03D2876855B0088D4BF /* Metatypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A68AFF62876855B0088D4BF /* Metatypes.swift */; };
+		5A68B03E2876855B0088D4BF /* XMLChoiceCodingKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A68AFF72876855B0088D4BF /* XMLChoiceCodingKey.swift */; };
+		5A68B03F2876855B0088D4BF /* ISO8601DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A68AFF82876855B0088D4BF /* ISO8601DateFormatter.swift */; };
+		5A68B0402876855B0088D4BF /* XMLKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A68AFF92876855B0088D4BF /* XMLKey.swift */; };
+		5A68B0412876855B0088D4BF /* KeyedStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A68AFFA2876855B0088D4BF /* KeyedStorage.swift */; };
+		5A68B0422876855B0088D4BF /* XMLCoderElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A68AFFB2876855B0088D4BF /* XMLCoderElement.swift */; };
+		5A68B0432876855B0088D4BF /* DynamicNodeEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A68AFFD2876855B0088D4BF /* DynamicNodeEncoding.swift */; };
+		5A68B0442876855B0088D4BF /* XMLEncoderImplementation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A68AFFE2876855B0088D4BF /* XMLEncoderImplementation.swift */; };
+		5A68B0452876855B0088D4BF /* SingleValueEncodingContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A68AFFF2876855B0088D4BF /* SingleValueEncodingContainer.swift */; };
+		5A68B0462876855B0088D4BF /* XMLReferencingEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A68B0002876855B0088D4BF /* XMLReferencingEncoder.swift */; };
+		5A68B0472876855B0088D4BF /* XMLChoiceEncodingContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A68B0012876855B0088D4BF /* XMLChoiceEncodingContainer.swift */; };
+		5A68B0482876855B0088D4BF /* XMLKeyedEncodingContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A68B0022876855B0088D4BF /* XMLKeyedEncodingContainer.swift */; };
+		5A68B0492876855B0088D4BF /* EncodingErrorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A68B0032876855B0088D4BF /* EncodingErrorExtension.swift */; };
+		5A68B04A2876855B0088D4BF /* XMLUnkeyedEncodingContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A68B0042876855B0088D4BF /* XMLUnkeyedEncodingContainer.swift */; };
+		5A68B04B2876855B0088D4BF /* XMLEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A68B0052876855B0088D4BF /* XMLEncoder.swift */; };
+		5A68B04C2876855B0088D4BF /* XMLEncodingStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A68B0062876855B0088D4BF /* XMLEncodingStorage.swift */; };
+		5A68B04D2876855B0088D4BF /* DecodingErrorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A68B0082876855B0088D4BF /* DecodingErrorExtension.swift */; };
+		5A68B04E2876855B0088D4BF /* XMLUnkeyedDecodingContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A68B0092876855B0088D4BF /* XMLUnkeyedDecodingContainer.swift */; };
+		5A68B04F2876855B0088D4BF /* SingleValueDecodingContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A68B00A2876855B0088D4BF /* SingleValueDecodingContainer.swift */; };
+		5A68B0502876855B0088D4BF /* XMLChoiceDecodingContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A68B00B2876855B0088D4BF /* XMLChoiceDecodingContainer.swift */; };
+		5A68B0512876855B0088D4BF /* XMLKeyedDecodingContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A68B00C2876855B0088D4BF /* XMLKeyedDecodingContainer.swift */; };
+		5A68B0522876855B0088D4BF /* DynamicNodeDecoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A68B00D2876855B0088D4BF /* DynamicNodeDecoding.swift */; };
+		5A68B0532876855B0088D4BF /* XMLDecodingStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A68B00E2876855B0088D4BF /* XMLDecodingStorage.swift */; };
+		5A68B0542876855B0088D4BF /* XMLDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A68B00F2876855B0088D4BF /* XMLDecoder.swift */; };
+		5A68B0552876855B0088D4BF /* XMLDecoderImplementation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A68B0102876855B0088D4BF /* XMLDecoderImplementation.swift */; };
+		5A68B0562876855B0088D4BF /* Archive+MemoryFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A68B0122876855B0088D4BF /* Archive+MemoryFile.swift */; };
+		5A68B0572876855B0088D4BF /* Archive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A68B0132876855B0088D4BF /* Archive.swift */; };
+		5A68B0582876855B0088D4BF /* Archive+Reading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A68B0142876855B0088D4BF /* Archive+Reading.swift */; };
+		5A68B0592876855B0088D4BF /* Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A68B0152876855B0088D4BF /* Entry.swift */; };
+		5A68B05A2876855B0088D4BF /* Data+Compression.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A68B0162876855B0088D4BF /* Data+Compression.swift */; };
+		5A68B05B2876855B0088D4BF /* Archive+Writing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A68B0172876855B0088D4BF /* Archive+Writing.swift */; };
+		5A68B05C2876855B0088D4BF /* Data+Serialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A68B0182876855B0088D4BF /* Data+Serialization.swift */; };
+		5A68B05D2876855B0088D4BF /* FileManager+ZIP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A68B0192876855B0088D4BF /* FileManager+ZIP.swift */; };
+		5A68B05E2876855B0088D4BF /* Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A68B01B2876855B0088D4BF /* Styles.swift */; };
+		5A68B05F2876855B0088D4BF /* Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A68B01D2876855B0088D4BF /* Cell.swift */; };
+		5A68B0602876855B0088D4BF /* Worksheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A68B01E2876855B0088D4BF /* Worksheet.swift */; };
+		5A68B0612876855B0088D4BF /* ColumnReference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A68B01F2876855B0088D4BF /* ColumnReference.swift */; };
+		5A68B0622876855B0088D4BF /* CellQueries.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A68B0202876855B0088D4BF /* CellQueries.swift */; };
+		5A68B0632876855B0088D4BF /* CellReference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A68B0212876855B0088D4BF /* CellReference.swift */; };
+		5A68B0642876855B0088D4BF /* Relationships.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A68B0222876855B0088D4BF /* Relationships.swift */; };
+		5A68B0652876855B0088D4BF /* Path.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A68B0232876855B0088D4BF /* Path.swift */; };
+		5A68B0662876855B0088D4BF /* Workbook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A68B0242876855B0088D4BF /* Workbook.swift */; };
+		5A68B0672876855B0088D4BF /* Comments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A68B0252876855B0088D4BF /* Comments.swift */; };
+		5A68B0682876855B0088D4BF /* SharedStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A68B0262876855B0088D4BF /* SharedStrings.swift */; };
+		5A68B0692876855B0088D4BF /* XLSXFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A68B0272876855B0088D4BF /* XLSXFile.swift */; };
+		EBFC37002872C7570070A66A /* ExcelReader.docc in Sources */ = {isa = PBXBuildFile; fileRef = EBFC36FF2872C7570070A66A /* ExcelReader.docc */; };
+		EBFC37012872C7570070A66A /* ExcelReader.h in Headers */ = {isa = PBXBuildFile; fileRef = EBFC36FE2872C7570070A66A /* ExcelReader.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EBFC37082872C8520070A66A /* ExcelReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBFC37072872C8520070A66A /* ExcelReader.swift */; };
+		EBFC371D2872D3420070A66A /* config.h in Headers */ = {isa = PBXBuildFile; fileRef = EBFC371C2872D3420070A66A /* config.h */; };
+		EBFC37252872D3680070A66A /* DHxlsReader-Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = EBFC371F2872D3680070A66A /* DHxlsReader-Prefix.pch */; };
+		EBFC37262872D3680070A66A /* DHxlsReader.m in Sources */ = {isa = PBXBuildFile; fileRef = EBFC37202872D3680070A66A /* DHxlsReader.m */; };
+		EBFC37272872D3680070A66A /* DHcell.h in Headers */ = {isa = PBXBuildFile; fileRef = EBFC37212872D3680070A66A /* DHcell.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EBFC37282872D3680070A66A /* DHxlsReader.h in Headers */ = {isa = PBXBuildFile; fileRef = EBFC37222872D3680070A66A /* DHxlsReader.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EBFC37292872D3680070A66A /* DHcell.m in Sources */ = {isa = PBXBuildFile; fileRef = EBFC37232872D3680070A66A /* DHcell.m */; };
+		EBFC372A2872D3680070A66A /* DHcell-Private.h in Headers */ = {isa = PBXBuildFile; fileRef = EBFC37242872D3680070A66A /* DHcell-Private.h */; };
+		EBFC37502872D3FF0070A66A /* xls.c in Sources */ = {isa = PBXBuildFile; fileRef = EBFC37352872D3FF0070A66A /* xls.c */; };
+		EBFC37512872D3FF0070A66A /* xlstool.c in Sources */ = {isa = PBXBuildFile; fileRef = EBFC37362872D3FF0070A66A /* xlstool.c */; };
+		EBFC37522872D3FF0070A66A /* ole.c in Sources */ = {isa = PBXBuildFile; fileRef = EBFC37372872D3FF0070A66A /* ole.c */; };
+		EBFC37552872D3FF0070A66A /* endian.c in Sources */ = {isa = PBXBuildFile; fileRef = EBFC373A2872D3FF0070A66A /* endian.c */; };
+		EBFC37572872D3FF0070A66A /* getopt.c in Sources */ = {isa = PBXBuildFile; fileRef = EBFC373C2872D3FF0070A66A /* getopt.c */; };
+		EBFC37582872D3FF0070A66A /* XlsReader.h in Headers */ = {isa = PBXBuildFile; fileRef = EBFC373E2872D3FF0070A66A /* XlsReader.h */; };
+		EBFC37592872D3FF0070A66A /* XlsReader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EBFC373F2872D3FF0070A66A /* XlsReader.cpp */; };
+		EBFC375B2872D4000070A66A /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EBFC37412872D3FF0070A66A /* main.cpp */; };
+		EBFC375C2872D4000070A66A /* endian.h in Headers */ = {isa = PBXBuildFile; fileRef = EBFC37442872D3FF0070A66A /* endian.h */; };
+		EBFC375D2872D4000070A66A /* xlstypes.h in Headers */ = {isa = PBXBuildFile; fileRef = EBFC37452872D3FF0070A66A /* xlstypes.h */; };
+		EBFC375E2872D4000070A66A /* xlsstruct.h in Headers */ = {isa = PBXBuildFile; fileRef = EBFC37462872D3FF0070A66A /* xlsstruct.h */; };
+		EBFC375F2872D4000070A66A /* brdb.c.h in Headers */ = {isa = PBXBuildFile; fileRef = EBFC37472872D3FF0070A66A /* brdb.c.h */; };
+		EBFC37612872D4000070A66A /* xlstool.h in Headers */ = {isa = PBXBuildFile; fileRef = EBFC37492872D3FF0070A66A /* xlstool.h */; };
+		EBFC37622872D4000070A66A /* xls.h in Headers */ = {isa = PBXBuildFile; fileRef = EBFC374A2872D3FF0070A66A /* xls.h */; };
+		EBFC37632872D4000070A66A /* ole.h in Headers */ = {isa = PBXBuildFile; fileRef = EBFC374B2872D3FF0070A66A /* ole.h */; };
+		EBFC37652872D4000070A66A /* brdb.h in Headers */ = {isa = PBXBuildFile; fileRef = EBFC374D2872D3FF0070A66A /* brdb.h */; };
+		EBFC37692872D4B80070A66A /* libiconv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = EBFC37682872D4B80070A66A /* libiconv.tbd */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		5A68AFE12876855B0088D4BF /* IntBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntBox.swift; sourceTree = "<group>"; };
+		5A68AFE22876855B0088D4BF /* UnkeyedBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnkeyedBox.swift; sourceTree = "<group>"; };
+		5A68AFE32876855B0088D4BF /* ValueBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValueBox.swift; sourceTree = "<group>"; };
+		5A68AFE42876855B0088D4BF /* DateBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateBox.swift; sourceTree = "<group>"; };
+		5A68AFE52876855B0088D4BF /* FloatBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatBox.swift; sourceTree = "<group>"; };
+		5A68AFE62876855B0088D4BF /* KeyedBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyedBox.swift; sourceTree = "<group>"; };
+		5A68AFE72876855B0088D4BF /* Box.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Box.swift; sourceTree = "<group>"; };
+		5A68AFE82876855B0088D4BF /* NullBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NullBox.swift; sourceTree = "<group>"; };
+		5A68AFE92876855B0088D4BF /* UIntBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIntBox.swift; sourceTree = "<group>"; };
+		5A68AFEA2876855B0088D4BF /* URLBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLBox.swift; sourceTree = "<group>"; };
+		5A68AFEB2876855B0088D4BF /* ChoiceBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChoiceBox.swift; sourceTree = "<group>"; };
+		5A68AFEC2876855B0088D4BF /* SharedBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharedBox.swift; sourceTree = "<group>"; };
+		5A68AFED2876855B0088D4BF /* DecimalBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DecimalBox.swift; sourceTree = "<group>"; };
+		5A68AFEE2876855B0088D4BF /* SingleKeyedBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingleKeyedBox.swift; sourceTree = "<group>"; };
+		5A68AFEF2876855B0088D4BF /* DataBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataBox.swift; sourceTree = "<group>"; };
+		5A68AFF02876855B0088D4BF /* DoubleBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoubleBox.swift; sourceTree = "<group>"; };
+		5A68AFF12876855B0088D4BF /* BoolBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoolBox.swift; sourceTree = "<group>"; };
+		5A68AFF22876855B0088D4BF /* StringBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringBox.swift; sourceTree = "<group>"; };
+		5A68AFF32876855B0088D4BF /* XMLHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XMLHeader.swift; sourceTree = "<group>"; };
+		5A68AFF42876855B0088D4BF /* String+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
+		5A68AFF52876855B0088D4BF /* XMLStackParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XMLStackParser.swift; sourceTree = "<group>"; };
+		5A68AFF62876855B0088D4BF /* Metatypes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Metatypes.swift; sourceTree = "<group>"; };
+		5A68AFF72876855B0088D4BF /* XMLChoiceCodingKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XMLChoiceCodingKey.swift; sourceTree = "<group>"; };
+		5A68AFF82876855B0088D4BF /* ISO8601DateFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ISO8601DateFormatter.swift; sourceTree = "<group>"; };
+		5A68AFF92876855B0088D4BF /* XMLKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XMLKey.swift; sourceTree = "<group>"; };
+		5A68AFFA2876855B0088D4BF /* KeyedStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyedStorage.swift; sourceTree = "<group>"; };
+		5A68AFFB2876855B0088D4BF /* XMLCoderElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XMLCoderElement.swift; sourceTree = "<group>"; };
+		5A68AFFD2876855B0088D4BF /* DynamicNodeEncoding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicNodeEncoding.swift; sourceTree = "<group>"; };
+		5A68AFFE2876855B0088D4BF /* XMLEncoderImplementation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XMLEncoderImplementation.swift; sourceTree = "<group>"; };
+		5A68AFFF2876855B0088D4BF /* SingleValueEncodingContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingleValueEncodingContainer.swift; sourceTree = "<group>"; };
+		5A68B0002876855B0088D4BF /* XMLReferencingEncoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XMLReferencingEncoder.swift; sourceTree = "<group>"; };
+		5A68B0012876855B0088D4BF /* XMLChoiceEncodingContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XMLChoiceEncodingContainer.swift; sourceTree = "<group>"; };
+		5A68B0022876855B0088D4BF /* XMLKeyedEncodingContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XMLKeyedEncodingContainer.swift; sourceTree = "<group>"; };
+		5A68B0032876855B0088D4BF /* EncodingErrorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EncodingErrorExtension.swift; sourceTree = "<group>"; };
+		5A68B0042876855B0088D4BF /* XMLUnkeyedEncodingContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XMLUnkeyedEncodingContainer.swift; sourceTree = "<group>"; };
+		5A68B0052876855B0088D4BF /* XMLEncoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XMLEncoder.swift; sourceTree = "<group>"; };
+		5A68B0062876855B0088D4BF /* XMLEncodingStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XMLEncodingStorage.swift; sourceTree = "<group>"; };
+		5A68B0082876855B0088D4BF /* DecodingErrorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DecodingErrorExtension.swift; sourceTree = "<group>"; };
+		5A68B0092876855B0088D4BF /* XMLUnkeyedDecodingContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XMLUnkeyedDecodingContainer.swift; sourceTree = "<group>"; };
+		5A68B00A2876855B0088D4BF /* SingleValueDecodingContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingleValueDecodingContainer.swift; sourceTree = "<group>"; };
+		5A68B00B2876855B0088D4BF /* XMLChoiceDecodingContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XMLChoiceDecodingContainer.swift; sourceTree = "<group>"; };
+		5A68B00C2876855B0088D4BF /* XMLKeyedDecodingContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XMLKeyedDecodingContainer.swift; sourceTree = "<group>"; };
+		5A68B00D2876855B0088D4BF /* DynamicNodeDecoding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicNodeDecoding.swift; sourceTree = "<group>"; };
+		5A68B00E2876855B0088D4BF /* XMLDecodingStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XMLDecodingStorage.swift; sourceTree = "<group>"; };
+		5A68B00F2876855B0088D4BF /* XMLDecoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XMLDecoder.swift; sourceTree = "<group>"; };
+		5A68B0102876855B0088D4BF /* XMLDecoderImplementation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XMLDecoderImplementation.swift; sourceTree = "<group>"; };
+		5A68B0122876855B0088D4BF /* Archive+MemoryFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Archive+MemoryFile.swift"; sourceTree = "<group>"; };
+		5A68B0132876855B0088D4BF /* Archive.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Archive.swift; sourceTree = "<group>"; };
+		5A68B0142876855B0088D4BF /* Archive+Reading.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Archive+Reading.swift"; sourceTree = "<group>"; };
+		5A68B0152876855B0088D4BF /* Entry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Entry.swift; sourceTree = "<group>"; };
+		5A68B0162876855B0088D4BF /* Data+Compression.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Data+Compression.swift"; sourceTree = "<group>"; };
+		5A68B0172876855B0088D4BF /* Archive+Writing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Archive+Writing.swift"; sourceTree = "<group>"; };
+		5A68B0182876855B0088D4BF /* Data+Serialization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Data+Serialization.swift"; sourceTree = "<group>"; };
+		5A68B0192876855B0088D4BF /* FileManager+ZIP.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FileManager+ZIP.swift"; sourceTree = "<group>"; };
+		5A68B01B2876855B0088D4BF /* Styles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Styles.swift; sourceTree = "<group>"; };
+		5A68B01D2876855B0088D4BF /* Cell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cell.swift; sourceTree = "<group>"; };
+		5A68B01E2876855B0088D4BF /* Worksheet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Worksheet.swift; sourceTree = "<group>"; };
+		5A68B01F2876855B0088D4BF /* ColumnReference.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColumnReference.swift; sourceTree = "<group>"; };
+		5A68B0202876855B0088D4BF /* CellQueries.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellQueries.swift; sourceTree = "<group>"; };
+		5A68B0212876855B0088D4BF /* CellReference.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellReference.swift; sourceTree = "<group>"; };
+		5A68B0222876855B0088D4BF /* Relationships.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Relationships.swift; sourceTree = "<group>"; };
+		5A68B0232876855B0088D4BF /* Path.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Path.swift; sourceTree = "<group>"; };
+		5A68B0242876855B0088D4BF /* Workbook.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Workbook.swift; sourceTree = "<group>"; };
+		5A68B0252876855B0088D4BF /* Comments.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Comments.swift; sourceTree = "<group>"; };
+		5A68B0262876855B0088D4BF /* SharedStrings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharedStrings.swift; sourceTree = "<group>"; };
+		5A68B0272876855B0088D4BF /* XLSXFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XLSXFile.swift; sourceTree = "<group>"; };
+		EB1AA0432875220A008B1A52 /* module.modulemap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
+		EBFC36FB2872C7570070A66A /* ExcelReader.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ExcelReader.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EBFC36FE2872C7570070A66A /* ExcelReader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExcelReader.h; sourceTree = "<group>"; };
+		EBFC36FF2872C7570070A66A /* ExcelReader.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = ExcelReader.docc; sourceTree = "<group>"; };
+		EBFC37072872C8520070A66A /* ExcelReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExcelReader.swift; sourceTree = "<group>"; };
+		EBFC371C2872D3420070A66A /* config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = config.h; sourceTree = "<group>"; };
+		EBFC371F2872D3680070A66A /* DHxlsReader-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DHxlsReader-Prefix.pch"; sourceTree = "<group>"; };
+		EBFC37202872D3680070A66A /* DHxlsReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DHxlsReader.m; sourceTree = "<group>"; };
+		EBFC37212872D3680070A66A /* DHcell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DHcell.h; sourceTree = "<group>"; };
+		EBFC37222872D3680070A66A /* DHxlsReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DHxlsReader.h; sourceTree = "<group>"; };
+		EBFC37232872D3680070A66A /* DHcell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DHcell.m; sourceTree = "<group>"; };
+		EBFC37242872D3680070A66A /* DHcell-Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DHcell-Private.h"; sourceTree = "<group>"; };
+		EBFC37352872D3FF0070A66A /* xls.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = xls.c; sourceTree = "<group>"; };
+		EBFC37362872D3FF0070A66A /* xlstool.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = xlstool.c; sourceTree = "<group>"; };
+		EBFC37372872D3FF0070A66A /* ole.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ole.c; sourceTree = "<group>"; };
+		EBFC373A2872D3FF0070A66A /* endian.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = endian.c; sourceTree = "<group>"; };
+		EBFC373C2872D3FF0070A66A /* getopt.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = getopt.c; sourceTree = "<group>"; };
+		EBFC373E2872D3FF0070A66A /* XlsReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XlsReader.h; sourceTree = "<group>"; };
+		EBFC373F2872D3FF0070A66A /* XlsReader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = XlsReader.cpp; sourceTree = "<group>"; };
+		EBFC37412872D3FF0070A66A /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		EBFC37442872D3FF0070A66A /* endian.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = endian.h; sourceTree = "<group>"; };
+		EBFC37452872D3FF0070A66A /* xlstypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = xlstypes.h; sourceTree = "<group>"; };
+		EBFC37462872D3FF0070A66A /* xlsstruct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = xlsstruct.h; sourceTree = "<group>"; };
+		EBFC37472872D3FF0070A66A /* brdb.c.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = brdb.c.h; sourceTree = "<group>"; };
+		EBFC37492872D3FF0070A66A /* xlstool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = xlstool.h; sourceTree = "<group>"; };
+		EBFC374A2872D3FF0070A66A /* xls.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = xls.h; sourceTree = "<group>"; };
+		EBFC374B2872D3FF0070A66A /* ole.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ole.h; sourceTree = "<group>"; };
+		EBFC374D2872D3FF0070A66A /* brdb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = brdb.h; sourceTree = "<group>"; };
+		EBFC37682872D4B80070A66A /* libiconv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.tbd; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.0.sdk/usr/lib/libiconv.tbd; sourceTree = DEVELOPER_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		EBFC36F82872C7570070A66A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EBFC37692872D4B80070A66A /* libiconv.tbd in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0D398B1EFC87A896AE46C5F1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				EBFC37682872D4B80070A66A /* libiconv.tbd */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5A68AFDE2876855B0088D4BF /* XMLCoder */ = {
+			isa = PBXGroup;
+			children = (
+				5A68AFDF2876855B0088D4BF /* Auxiliaries */,
+				5A68AFFC2876855B0088D4BF /* Encoder */,
+				5A68B0072876855B0088D4BF /* Decoder */,
+			);
+			path = XMLCoder;
+			sourceTree = "<group>";
+		};
+		5A68AFDF2876855B0088D4BF /* Auxiliaries */ = {
+			isa = PBXGroup;
+			children = (
+				5A68AFE02876855B0088D4BF /* Box */,
+				5A68AFF32876855B0088D4BF /* XMLHeader.swift */,
+				5A68AFF42876855B0088D4BF /* String+Extensions.swift */,
+				5A68AFF52876855B0088D4BF /* XMLStackParser.swift */,
+				5A68AFF62876855B0088D4BF /* Metatypes.swift */,
+				5A68AFF72876855B0088D4BF /* XMLChoiceCodingKey.swift */,
+				5A68AFF82876855B0088D4BF /* ISO8601DateFormatter.swift */,
+				5A68AFF92876855B0088D4BF /* XMLKey.swift */,
+				5A68AFFA2876855B0088D4BF /* KeyedStorage.swift */,
+				5A68AFFB2876855B0088D4BF /* XMLCoderElement.swift */,
+			);
+			path = Auxiliaries;
+			sourceTree = "<group>";
+		};
+		5A68AFE02876855B0088D4BF /* Box */ = {
+			isa = PBXGroup;
+			children = (
+				5A68AFE12876855B0088D4BF /* IntBox.swift */,
+				5A68AFE22876855B0088D4BF /* UnkeyedBox.swift */,
+				5A68AFE32876855B0088D4BF /* ValueBox.swift */,
+				5A68AFE42876855B0088D4BF /* DateBox.swift */,
+				5A68AFE52876855B0088D4BF /* FloatBox.swift */,
+				5A68AFE62876855B0088D4BF /* KeyedBox.swift */,
+				5A68AFE72876855B0088D4BF /* Box.swift */,
+				5A68AFE82876855B0088D4BF /* NullBox.swift */,
+				5A68AFE92876855B0088D4BF /* UIntBox.swift */,
+				5A68AFEA2876855B0088D4BF /* URLBox.swift */,
+				5A68AFEB2876855B0088D4BF /* ChoiceBox.swift */,
+				5A68AFEC2876855B0088D4BF /* SharedBox.swift */,
+				5A68AFED2876855B0088D4BF /* DecimalBox.swift */,
+				5A68AFEE2876855B0088D4BF /* SingleKeyedBox.swift */,
+				5A68AFEF2876855B0088D4BF /* DataBox.swift */,
+				5A68AFF02876855B0088D4BF /* DoubleBox.swift */,
+				5A68AFF12876855B0088D4BF /* BoolBox.swift */,
+				5A68AFF22876855B0088D4BF /* StringBox.swift */,
+			);
+			path = Box;
+			sourceTree = "<group>";
+		};
+		5A68AFFC2876855B0088D4BF /* Encoder */ = {
+			isa = PBXGroup;
+			children = (
+				5A68AFFD2876855B0088D4BF /* DynamicNodeEncoding.swift */,
+				5A68AFFE2876855B0088D4BF /* XMLEncoderImplementation.swift */,
+				5A68AFFF2876855B0088D4BF /* SingleValueEncodingContainer.swift */,
+				5A68B0002876855B0088D4BF /* XMLReferencingEncoder.swift */,
+				5A68B0012876855B0088D4BF /* XMLChoiceEncodingContainer.swift */,
+				5A68B0022876855B0088D4BF /* XMLKeyedEncodingContainer.swift */,
+				5A68B0032876855B0088D4BF /* EncodingErrorExtension.swift */,
+				5A68B0042876855B0088D4BF /* XMLUnkeyedEncodingContainer.swift */,
+				5A68B0052876855B0088D4BF /* XMLEncoder.swift */,
+				5A68B0062876855B0088D4BF /* XMLEncodingStorage.swift */,
+			);
+			path = Encoder;
+			sourceTree = "<group>";
+		};
+		5A68B0072876855B0088D4BF /* Decoder */ = {
+			isa = PBXGroup;
+			children = (
+				5A68B0082876855B0088D4BF /* DecodingErrorExtension.swift */,
+				5A68B0092876855B0088D4BF /* XMLUnkeyedDecodingContainer.swift */,
+				5A68B00A2876855B0088D4BF /* SingleValueDecodingContainer.swift */,
+				5A68B00B2876855B0088D4BF /* XMLChoiceDecodingContainer.swift */,
+				5A68B00C2876855B0088D4BF /* XMLKeyedDecodingContainer.swift */,
+				5A68B00D2876855B0088D4BF /* DynamicNodeDecoding.swift */,
+				5A68B00E2876855B0088D4BF /* XMLDecodingStorage.swift */,
+				5A68B00F2876855B0088D4BF /* XMLDecoder.swift */,
+				5A68B0102876855B0088D4BF /* XMLDecoderImplementation.swift */,
+			);
+			path = Decoder;
+			sourceTree = "<group>";
+		};
+		5A68B0112876855B0088D4BF /* ZIPFoundation */ = {
+			isa = PBXGroup;
+			children = (
+				5A68B0122876855B0088D4BF /* Archive+MemoryFile.swift */,
+				5A68B0132876855B0088D4BF /* Archive.swift */,
+				5A68B0142876855B0088D4BF /* Archive+Reading.swift */,
+				5A68B0152876855B0088D4BF /* Entry.swift */,
+				5A68B0162876855B0088D4BF /* Data+Compression.swift */,
+				5A68B0172876855B0088D4BF /* Archive+Writing.swift */,
+				5A68B0182876855B0088D4BF /* Data+Serialization.swift */,
+				5A68B0192876855B0088D4BF /* FileManager+ZIP.swift */,
+			);
+			path = ZIPFoundation;
+			sourceTree = "<group>";
+		};
+		5A68B01A2876855B0088D4BF /* CoreXLSX */ = {
+			isa = PBXGroup;
+			children = (
+				5A68B01B2876855B0088D4BF /* Styles.swift */,
+				5A68B01C2876855B0088D4BF /* Worksheet */,
+				5A68B0222876855B0088D4BF /* Relationships.swift */,
+				5A68B0232876855B0088D4BF /* Path.swift */,
+				5A68B0242876855B0088D4BF /* Workbook.swift */,
+				5A68B0252876855B0088D4BF /* Comments.swift */,
+				5A68B0262876855B0088D4BF /* SharedStrings.swift */,
+				5A68B0272876855B0088D4BF /* XLSXFile.swift */,
+			);
+			path = CoreXLSX;
+			sourceTree = "<group>";
+		};
+		5A68B01C2876855B0088D4BF /* Worksheet */ = {
+			isa = PBXGroup;
+			children = (
+				5A68B01D2876855B0088D4BF /* Cell.swift */,
+				5A68B01E2876855B0088D4BF /* Worksheet.swift */,
+				5A68B01F2876855B0088D4BF /* ColumnReference.swift */,
+				5A68B0202876855B0088D4BF /* CellQueries.swift */,
+				5A68B0212876855B0088D4BF /* CellReference.swift */,
+			);
+			path = Worksheet;
+			sourceTree = "<group>";
+		};
+		EBFC36F12872C7560070A66A = {
+			isa = PBXGroup;
+			children = (
+				EBFC36FD2872C7570070A66A /* ExcelReader */,
+				EBFC36FC2872C7570070A66A /* Products */,
+				0D398B1EFC87A896AE46C5F1 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		EBFC36FC2872C7570070A66A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EBFC36FB2872C7570070A66A /* ExcelReader.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		EBFC36FD2872C7570070A66A /* ExcelReader */ = {
+			isa = PBXGroup;
+			children = (
+				5A68B01A2876855B0088D4BF /* CoreXLSX */,
+				5A68AFDE2876855B0088D4BF /* XMLCoder */,
+				5A68B0112876855B0088D4BF /* ZIPFoundation */,
+				EBFC371B2872D3150070A66A /* Lib */,
+				EBFC36FE2872C7570070A66A /* ExcelReader.h */,
+				EBFC36FF2872C7570070A66A /* ExcelReader.docc */,
+				EBFC37072872C8520070A66A /* ExcelReader.swift */,
+				EB1AA0432875220A008B1A52 /* module.modulemap */,
+			);
+			path = ExcelReader;
+			sourceTree = "<group>";
+		};
+		EBFC371B2872D3150070A66A /* Lib */ = {
+			isa = PBXGroup;
+			children = (
+				EBFC373D2872D3FF0070A66A /* cplusplus */,
+				EBFC37422872D3FF0070A66A /* include */,
+				EBFC37342872D3FF0070A66A /* src */,
+				EBFC371E2872D3680070A66A /* DHxlsReader */,
+				EBFC371C2872D3420070A66A /* config.h */,
+			);
+			path = Lib;
+			sourceTree = "<group>";
+		};
+		EBFC371E2872D3680070A66A /* DHxlsReader */ = {
+			isa = PBXGroup;
+			children = (
+				EBFC371F2872D3680070A66A /* DHxlsReader-Prefix.pch */,
+				EBFC37202872D3680070A66A /* DHxlsReader.m */,
+				EBFC37212872D3680070A66A /* DHcell.h */,
+				EBFC37222872D3680070A66A /* DHxlsReader.h */,
+				EBFC37232872D3680070A66A /* DHcell.m */,
+				EBFC37242872D3680070A66A /* DHcell-Private.h */,
+			);
+			path = DHxlsReader;
+			sourceTree = "<group>";
+		};
+		EBFC37342872D3FF0070A66A /* src */ = {
+			isa = PBXGroup;
+			children = (
+				EBFC37352872D3FF0070A66A /* xls.c */,
+				EBFC37362872D3FF0070A66A /* xlstool.c */,
+				EBFC37372872D3FF0070A66A /* ole.c */,
+				EBFC373A2872D3FF0070A66A /* endian.c */,
+				EBFC373C2872D3FF0070A66A /* getopt.c */,
+			);
+			name = src;
+			path = libxls/src;
+			sourceTree = "<group>";
+		};
+		EBFC373D2872D3FF0070A66A /* cplusplus */ = {
+			isa = PBXGroup;
+			children = (
+				EBFC373E2872D3FF0070A66A /* XlsReader.h */,
+				EBFC373F2872D3FF0070A66A /* XlsReader.cpp */,
+				EBFC37412872D3FF0070A66A /* main.cpp */,
+			);
+			name = cplusplus;
+			path = libxls/cplusplus;
+			sourceTree = "<group>";
+		};
+		EBFC37422872D3FF0070A66A /* include */ = {
+			isa = PBXGroup;
+			children = (
+				EBFC37432872D3FF0070A66A /* libxls */,
+			);
+			name = include;
+			path = libxls/include;
+			sourceTree = "<group>";
+		};
+		EBFC37432872D3FF0070A66A /* libxls */ = {
+			isa = PBXGroup;
+			children = (
+				EBFC37442872D3FF0070A66A /* endian.h */,
+				EBFC37452872D3FF0070A66A /* xlstypes.h */,
+				EBFC37462872D3FF0070A66A /* xlsstruct.h */,
+				EBFC37472872D3FF0070A66A /* brdb.c.h */,
+				EBFC37492872D3FF0070A66A /* xlstool.h */,
+				EBFC374A2872D3FF0070A66A /* xls.h */,
+				EBFC374B2872D3FF0070A66A /* ole.h */,
+				EBFC374D2872D3FF0070A66A /* brdb.h */,
+			);
+			path = libxls;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		EBFC36F62872C7570070A66A /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EBFC37652872D4000070A66A /* brdb.h in Headers */,
+				EBFC37282872D3680070A66A /* DHxlsReader.h in Headers */,
+				EBFC37272872D3680070A66A /* DHcell.h in Headers */,
+				EBFC371D2872D3420070A66A /* config.h in Headers */,
+				EBFC375D2872D4000070A66A /* xlstypes.h in Headers */,
+				EBFC37622872D4000070A66A /* xls.h in Headers */,
+				EBFC375F2872D4000070A66A /* brdb.c.h in Headers */,
+				EBFC37252872D3680070A66A /* DHxlsReader-Prefix.pch in Headers */,
+				EBFC372A2872D3680070A66A /* DHcell-Private.h in Headers */,
+				EBFC37582872D3FF0070A66A /* XlsReader.h in Headers */,
+				EBFC375C2872D4000070A66A /* endian.h in Headers */,
+				EBFC37612872D4000070A66A /* xlstool.h in Headers */,
+				EBFC37012872C7570070A66A /* ExcelReader.h in Headers */,
+				EBFC375E2872D4000070A66A /* xlsstruct.h in Headers */,
+				EBFC37632872D4000070A66A /* ole.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		EBFC36FA2872C7570070A66A /* ExcelReader */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EBFC37042872C7570070A66A /* Build configuration list for PBXNativeTarget "ExcelReader" */;
+			buildPhases = (
+				EBFC36F62872C7570070A66A /* Headers */,
+				EBFC36F72872C7570070A66A /* Sources */,
+				EBFC36F82872C7570070A66A /* Frameworks */,
+				EBFC36F92872C7570070A66A /* Resources */,
+				EB7A5317287688C5001EF469 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ExcelReader;
+			productName = ExcelReader;
+			productReference = EBFC36FB2872C7570070A66A /* ExcelReader.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		EBFC36F22872C7560070A66A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastUpgradeCheck = 1310;
+				TargetAttributes = {
+					EBFC36FA2872C7570070A66A = {
+						CreatedOnToolsVersion = 13.1;
+						LastSwiftMigration = 1310;
+					};
+				};
+			};
+			buildConfigurationList = EBFC36F52872C7560070A66A /* Build configuration list for PBXProject "ExcelReader" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = EBFC36F12872C7560070A66A;
+			productRefGroup = EBFC36FC2872C7570070A66A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				EBFC36FA2872C7570070A66A /* ExcelReader */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		EBFC36F92872C7570070A66A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		EB7A5317287688C5001EF469 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\necho \"run script begin\"\nscript_path=${SRCROOT}/post_build.sh\nchmod 777 $script_path\n# 调用sh脚本文件\nsh $script_path\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		EBFC36F72872C7570070A66A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5A68B04C2876855B0088D4BF /* XMLEncodingStorage.swift in Sources */,
+				5A68B0292876855B0088D4BF /* UnkeyedBox.swift in Sources */,
+				5A68B0302876855B0088D4BF /* UIntBox.swift in Sources */,
+				5A68B0422876855B0088D4BF /* XMLCoderElement.swift in Sources */,
+				5A68B0572876855B0088D4BF /* Archive.swift in Sources */,
+				5A68B0592876855B0088D4BF /* Entry.swift in Sources */,
+				5A68B0312876855B0088D4BF /* URLBox.swift in Sources */,
+				5A68B04F2876855B0088D4BF /* SingleValueDecodingContainer.swift in Sources */,
+				5A68B04A2876855B0088D4BF /* XMLUnkeyedEncodingContainer.swift in Sources */,
+				5A68B03C2876855B0088D4BF /* XMLStackParser.swift in Sources */,
+				5A68B0472876855B0088D4BF /* XMLChoiceEncodingContainer.swift in Sources */,
+				5A68B0642876855B0088D4BF /* Relationships.swift in Sources */,
+				EBFC37572872D3FF0070A66A /* getopt.c in Sources */,
+				EBFC37502872D3FF0070A66A /* xls.c in Sources */,
+				EBFC37552872D3FF0070A66A /* endian.c in Sources */,
+				5A68B0442876855B0088D4BF /* XMLEncoderImplementation.swift in Sources */,
+				5A68B04E2876855B0088D4BF /* XMLUnkeyedDecodingContainer.swift in Sources */,
+				5A68B03D2876855B0088D4BF /* Metatypes.swift in Sources */,
+				5A68B03E2876855B0088D4BF /* XMLChoiceCodingKey.swift in Sources */,
+				EBFC37082872C8520070A66A /* ExcelReader.swift in Sources */,
+				EBFC37522872D3FF0070A66A /* ole.c in Sources */,
+				EBFC37262872D3680070A66A /* DHxlsReader.m in Sources */,
+				5A68B0482876855B0088D4BF /* XMLKeyedEncodingContainer.swift in Sources */,
+				EBFC37002872C7570070A66A /* ExcelReader.docc in Sources */,
+				5A68B0492876855B0088D4BF /* EncodingErrorExtension.swift in Sources */,
+				5A68B03A2876855B0088D4BF /* XMLHeader.swift in Sources */,
+				5A68B02C2876855B0088D4BF /* FloatBox.swift in Sources */,
+				5A68B0412876855B0088D4BF /* KeyedStorage.swift in Sources */,
+				5A68B0362876855B0088D4BF /* DataBox.swift in Sources */,
+				5A68B0432876855B0088D4BF /* DynamicNodeEncoding.swift in Sources */,
+				5A68B03F2876855B0088D4BF /* ISO8601DateFormatter.swift in Sources */,
+				5A68B0452876855B0088D4BF /* SingleValueEncodingContainer.swift in Sources */,
+				5A68B0532876855B0088D4BF /* XMLDecodingStorage.swift in Sources */,
+				5A68B0622876855B0088D4BF /* CellQueries.swift in Sources */,
+				5A68B0582876855B0088D4BF /* Archive+Reading.swift in Sources */,
+				5A68B0652876855B0088D4BF /* Path.swift in Sources */,
+				5A68B05E2876855B0088D4BF /* Styles.swift in Sources */,
+				5A68B0552876855B0088D4BF /* XMLDecoderImplementation.swift in Sources */,
+				5A68B0332876855B0088D4BF /* SharedBox.swift in Sources */,
+				5A68B0502876855B0088D4BF /* XMLChoiceDecodingContainer.swift in Sources */,
+				5A68B04B2876855B0088D4BF /* XMLEncoder.swift in Sources */,
+				5A68B05D2876855B0088D4BF /* FileManager+ZIP.swift in Sources */,
+				5A68B0392876855B0088D4BF /* StringBox.swift in Sources */,
+				5A68B05B2876855B0088D4BF /* Archive+Writing.swift in Sources */,
+				5A68B05A2876855B0088D4BF /* Data+Compression.swift in Sources */,
+				5A68B0512876855B0088D4BF /* XMLKeyedDecodingContainer.swift in Sources */,
+				5A68B0382876855B0088D4BF /* BoolBox.swift in Sources */,
+				5A68B02E2876855B0088D4BF /* Box.swift in Sources */,
+				5A68B04D2876855B0088D4BF /* DecodingErrorExtension.swift in Sources */,
+				5A68B0562876855B0088D4BF /* Archive+MemoryFile.swift in Sources */,
+				5A68B0372876855B0088D4BF /* DoubleBox.swift in Sources */,
+				5A68B0462876855B0088D4BF /* XMLReferencingEncoder.swift in Sources */,
+				5A68B0322876855B0088D4BF /* ChoiceBox.swift in Sources */,
+				EBFC37292872D3680070A66A /* DHcell.m in Sources */,
+				5A68B02F2876855B0088D4BF /* NullBox.swift in Sources */,
+				5A68B0352876855B0088D4BF /* SingleKeyedBox.swift in Sources */,
+				5A68B0672876855B0088D4BF /* Comments.swift in Sources */,
+				5A68B02B2876855B0088D4BF /* DateBox.swift in Sources */,
+				EBFC37512872D3FF0070A66A /* xlstool.c in Sources */,
+				EBFC375B2872D4000070A66A /* main.cpp in Sources */,
+				5A68B05C2876855B0088D4BF /* Data+Serialization.swift in Sources */,
+				5A68B0342876855B0088D4BF /* DecimalBox.swift in Sources */,
+				5A68B0632876855B0088D4BF /* CellReference.swift in Sources */,
+				5A68B0602876855B0088D4BF /* Worksheet.swift in Sources */,
+				EBFC37592872D3FF0070A66A /* XlsReader.cpp in Sources */,
+				5A68B0282876855B0088D4BF /* IntBox.swift in Sources */,
+				5A68B0542876855B0088D4BF /* XMLDecoder.swift in Sources */,
+				5A68B0682876855B0088D4BF /* SharedStrings.swift in Sources */,
+				5A68B0692876855B0088D4BF /* XLSXFile.swift in Sources */,
+				5A68B0612876855B0088D4BF /* ColumnReference.swift in Sources */,
+				5A68B03B2876855B0088D4BF /* String+Extensions.swift in Sources */,
+				5A68B05F2876855B0088D4BF /* Cell.swift in Sources */,
+				5A68B0402876855B0088D4BF /* XMLKey.swift in Sources */,
+				5A68B02D2876855B0088D4BF /* KeyedBox.swift in Sources */,
+				5A68B0522876855B0088D4BF /* DynamicNodeDecoding.swift in Sources */,
+				5A68B02A2876855B0088D4BF /* ValueBox.swift in Sources */,
+				5A68B0662876855B0088D4BF /* Workbook.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		EBFC37022872C7570070A66A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		EBFC37032872C7570070A66A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		EBFC37052872C7570070A66A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 7VC3687H26;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GENERATE_INFOPLIST_FILE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"${SRCROOT}/ExcelReader/Lib/DHxlsReader/",
+					"${SRCROOT}/ExcelReader/Lib/libxls/cplusplus/",
+					"${SRCROOT}/ExcelReader/Lib/libxls/include/",
+				);
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = mh_dylib;
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.demo.ExcelReader;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_INCLUDE_PATHS = "$(SRCROOT)/ExcelReader/";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		EBFC37062872C7570070A66A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 7VC3687H26;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GENERATE_INFOPLIST_FILE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"${SRCROOT}/ExcelReader/Lib/DHxlsReader/",
+					"${SRCROOT}/ExcelReader/Lib/libxls/cplusplus/",
+					"${SRCROOT}/ExcelReader/Lib/libxls/include/",
+				);
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = mh_dylib;
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.demo.ExcelReader;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_INCLUDE_PATHS = "$(SRCROOT)/ExcelReader/";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		EBFC36F52872C7560070A66A /* Build configuration list for PBXProject "ExcelReader" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EBFC37022872C7570070A66A /* Debug */,
+				EBFC37032872C7570070A66A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EBFC37042872C7570070A66A /* Build configuration list for PBXNativeTarget "ExcelReader" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EBFC37052872C7570070A66A /* Debug */,
+				EBFC37062872C7570070A66A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = EBFC36F22872C7560070A66A /* Project object */;
+}

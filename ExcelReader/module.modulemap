@@ -1,0 +1,6 @@
+module DHxlsReader [system] {
+    header "./Lib/DHxlsReader/DHcell.h"
+    header "./Lib/DHxlsReader/DHxlsReader.h"
+    export *
+}
+

@@ -1,0 +1,11 @@
+framework module ExcelReader {
+  umbrella header "ExcelReader.h"
+
+  export *
+  module * { export * }
+}
+
+module ExcelReader.Swift {
+    header "ExcelReader-Swift.h"
+    requires objc
+}
