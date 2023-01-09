@@ -1,0 +1,993 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.5.1 (swiftlang-1300.0.31.4 clang-1300.0.29.6)
+// swift-module-flags: -target arm64-apple-ios13.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name ExcelReader
+import Combine/*.TopLevelDecoder*/
+import Combine/*.TopLevelEncoder*/
+import Compression
+import CoreFoundation
+@_exported import ExcelReader
+import Foundation
+import Swift
+import WebKit
+import _Concurrency
+public let defaultReadChunkSize: Swift.UInt32
+public let defaultWriteChunkSize: Swift.UInt32
+public let defaultFilePermissions: Swift.UInt16
+public let defaultDirectoryPermissions: Swift.UInt16
+public enum CompressionMethod : Swift.UInt16 {
+  case none
+  case deflate
+  public init?(rawValue: Swift.UInt16)
+  public typealias RawValue = Swift.UInt16
+  public var rawValue: Swift.UInt16 {
+    get
+  }
+}
+final public class Archive : Swift.Sequence {
+  public enum ArchiveError : Swift.Error {
+    case unreadableArchive
+    case unwritableArchive
+    case invalidEntryPath
+    case invalidCompressionMethod
+    case invalidStartOfCentralDirectoryOffset
+    case missingEndOfCentralDirectoryRecord
+    case cancelledOperation
+    public static func == (a: ExcelReader.Archive.ArchiveError, b: ExcelReader.Archive.ArchiveError) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public enum AccessMode : Swift.UInt {
+    case create
+    case read
+    case update
+    public init?(rawValue: Swift.UInt)
+    public typealias RawValue = Swift.UInt
+    public var rawValue: Swift.UInt {
+      get
+    }
+  }
+  final public let url: Foundation.URL
+  final public let accessMode: ExcelReader.Archive.AccessMode
+  public init?(url: Foundation.URL, accessMode mode: ExcelReader.Archive.AccessMode, preferredEncoding: Swift.String.Encoding? = nil)
+  public init?(data: Foundation.Data = Data(), accessMode mode: ExcelReader.Archive.AccessMode, preferredEncoding: Swift.String.Encoding? = nil)
+  @objc deinit
+  final public func makeIterator() -> Swift.AnyIterator<ExcelReader.Entry>
+  final public subscript(path: Swift.String) -> ExcelReader.Entry? {
+    get
+  }
+  public typealias Element = ExcelReader.Entry
+  public typealias Iterator = Swift.AnyIterator<ExcelReader.Entry>
+}
+extension ExcelReader.Archive {
+  final public func totalUnitCountForRemoving(_ entry: ExcelReader.Entry) -> Swift.Int64
+  final public func totalUnitCountForReading(_ entry: ExcelReader.Entry) -> Swift.Int64
+  final public func totalUnitCountForAddingItem(at url: Foundation.URL) -> Swift.Int64
+}
+public struct Entry : Swift.Equatable {
+  public enum EntryType : Swift.Int {
+    case file
+    case directory
+    case symlink
+    public init?(rawValue: Swift.Int)
+    public typealias RawValue = Swift.Int
+    public var rawValue: Swift.Int {
+      get
+    }
+  }
+  public func path(using encoding: Swift.String.Encoding) -> Swift.String
+  public var path: Swift.String {
+    get
+  }
+  public var fileAttributes: [Foundation.FileAttributeKey : Any] {
+    get
+  }
+  public var checksum: ExcelReader.CRC32 {
+    get
+  }
+  public var type: ExcelReader.Entry.EntryType {
+    get
+  }
+  public var compressedSize: Swift.Int {
+    get
+  }
+  public var uncompressedSize: Swift.Int {
+    get
+  }
+  public static func == (lhs: ExcelReader.Entry, rhs: ExcelReader.Entry) -> Swift.Bool
+}
+public struct Relationships : Swift.Codable, Swift.Equatable {
+  public let items: [ExcelReader.Relationship]
+  public static func == (a: ExcelReader.Relationships, b: ExcelReader.Relationships) -> Swift.Bool
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct Relationship : Swift.Codable, Swift.Equatable {
+  public enum SchemaType : Swift.String, Swift.Codable {
+    case calcChain
+    case officeDocument
+    case extendedProperties
+    case packageCoreProperties
+    case coreProperties
+    case connections
+    case worksheet
+    case chartsheet
+    case sharedStrings
+    case styles
+    case theme
+    case pivotCache
+    case metadataThumbnail
+    case customProperties
+    case externalLink
+    case customXml
+    case person
+    case webExtensionTaskPanes
+    case googleWorkbookMetadata
+    case purlOCLC
+    public init?(rawValue: Swift.String)
+    public typealias RawValue = Swift.String
+    public var rawValue: Swift.String {
+      get
+    }
+  }
+  public let id: Swift.String
+  public let type: ExcelReader.Relationship.SchemaType
+  public let target: Swift.String
+  public static func == (a: ExcelReader.Relationship, b: ExcelReader.Relationship) -> Swift.Bool
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public protocol XMLChoiceCodingKey : Swift.CodingKey {
+}
+public enum ExcelError : Swift.Error {
+  case loadFileFailed
+  case notExcelFile
+  case other(msg: Swift.String)
+}
+@_hasMissingDesignatedInitializers open class ExcelReaderCore {
+  public static let shared: ExcelReader.ExcelReaderCore
+  public func convertToCSV(path: Swift.String) throws -> Swift.String
+  public func convertToPdf(path: Swift.String, complate: @escaping (Swift.String) -> Swift.Void) throws
+  public func convertToTXT(path: Swift.String) throws -> Swift.String
+  @objc deinit
+}
+public struct XMLHeader {
+  public let version: Swift.Double?
+  public let encoding: Swift.String?
+  public let standalone: Swift.String?
+  public init(version: Swift.Double? = nil, encoding: Swift.String? = nil, standalone: Swift.String? = nil)
+}
+public protocol DynamicNodeEncoding : Swift.Encodable {
+  static func nodeEncoding(for key: Swift.CodingKey) -> ExcelReader.XMLEncoder.NodeEncoding
+}
+extension Swift.Array : ExcelReader.DynamicNodeEncoding where Element : ExcelReader.DynamicNodeEncoding {
+  public static func nodeEncoding(for key: Swift.CodingKey) -> ExcelReader.XMLEncoder.NodeEncoding
+}
+extension ExcelReader.DynamicNodeEncoding where Self : Swift.Collection, Self.Element : ExcelReader.DynamicNodeEncoding {
+  public static func nodeEncoding(for key: Swift.CodingKey) -> ExcelReader.XMLEncoder.NodeEncoding
+}
+extension ExcelReader.Worksheet {
+  public func cells<T>(atColumns columns: T) -> [ExcelReader.Cell] where T : Swift.Collection, T.Element == ExcelReader.ColumnReference
+  public func cells<T>(atRows rows: T) -> [ExcelReader.Cell] where T : Swift.Collection, T.Element == Swift.UInt
+  public func cells<T1, T2>(atColumns columns: T1, rows: T2) -> [ExcelReader.Cell] where T1 : Swift.Collection, T2 : Swift.Collection, T1.Element == ExcelReader.ColumnReference, T2.Element == Swift.UInt
+}
+extension ExcelReader.Cell {
+  public func stringValue(_ sharedStrings: ExcelReader.SharedStrings) -> Swift.String?
+  public func richStringValue(_ sharedStrings: ExcelReader.SharedStrings) -> [ExcelReader.RichText]
+  public var dateValue: Foundation.Date? {
+    get
+  }
+  public func format(in styles: ExcelReader.Styles) -> ExcelReader.Format?
+  public func font(in styles: ExcelReader.Styles) -> ExcelReader.Font?
+}
+extension ExcelReader.Archive {
+  final public func extract(_ entry: ExcelReader.Entry, to url: Foundation.URL, bufferSize: Swift.UInt32 = defaultReadChunkSize, skipCRC32: Swift.Bool = false, progress: Foundation.Progress? = nil) throws -> ExcelReader.CRC32
+  final public func extract(_ entry: ExcelReader.Entry, bufferSize: Swift.UInt32 = defaultReadChunkSize, skipCRC32: Swift.Bool = false, progress: Foundation.Progress? = nil, consumer: (_ data: Foundation.Data) throws -> Swift.Void) throws -> ExcelReader.CRC32
+}
+public struct Path {
+  public let value: Swift.String
+  public let isRoot: Swift.Bool
+  public let components: [Swift.Substring]
+  public init(_ value: Swift.String)
+}
+public struct Styles : Swift.Codable, Swift.Equatable {
+  public let numberFormats: ExcelReader.NumberFormats?
+  public let fonts: ExcelReader.Fonts?
+  public let fills: ExcelReader.Fills?
+  public let borders: ExcelReader.Borders?
+  public let cellStyleFormats: ExcelReader.CellStyleFormats?
+  public let cellFormats: ExcelReader.CellFormats?
+  public let differentialFormats: ExcelReader.DifferentialFormats?
+  public let tableStyles: ExcelReader.TableStyles?
+  public let cellStyles: ExcelReader.CellStyles?
+  public let colors: ExcelReader.Colors?
+  public static func == (a: ExcelReader.Styles, b: ExcelReader.Styles) -> Swift.Bool
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct Color : Swift.Codable, Swift.Equatable {
+  public let indexed: Swift.Int?
+  public let auto: Swift.Int?
+  public let rgb: Swift.String?
+  public static func == (a: ExcelReader.Color, b: ExcelReader.Color) -> Swift.Bool
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct NumberFormats : Swift.Codable, Swift.Equatable {
+  public let items: [ExcelReader.NumberFormat]
+  public let count: Swift.Int
+  public static func == (a: ExcelReader.NumberFormats, b: ExcelReader.NumberFormats) -> Swift.Bool
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct NumberFormat : Swift.Codable, Swift.Equatable {
+  public let id: Swift.Int
+  public let formatCode: Swift.String
+  public static func == (a: ExcelReader.NumberFormat, b: ExcelReader.NumberFormat) -> Swift.Bool
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct Fonts : Swift.Codable, Swift.Equatable {
+  public let items: [ExcelReader.Font]
+  public let count: Swift.Int
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (a: ExcelReader.Fonts, b: ExcelReader.Fonts) -> Swift.Bool
+  public func encode(to encoder: Swift.Encoder) throws
+}
+public struct Font : Swift.Codable, Swift.Equatable {
+  public struct Size : Swift.Codable, Swift.Equatable {
+    public let value: Swift.Double
+    public static func == (a: ExcelReader.Font.Size, b: ExcelReader.Font.Size) -> Swift.Bool
+    public func encode(to encoder: Swift.Encoder) throws
+    public init(from decoder: Swift.Decoder) throws
+  }
+  public struct Name : Swift.Codable, Swift.Equatable {
+    public let value: Swift.String
+    public static func == (a: ExcelReader.Font.Name, b: ExcelReader.Font.Name) -> Swift.Bool
+    public func encode(to encoder: Swift.Encoder) throws
+    public init(from decoder: Swift.Decoder) throws
+  }
+  public struct Bold : Swift.Codable, Swift.Equatable {
+    public let value: Swift.Bool?
+    public static func == (a: ExcelReader.Font.Bold, b: ExcelReader.Font.Bold) -> Swift.Bool
+    public func encode(to encoder: Swift.Encoder) throws
+    public init(from decoder: Swift.Decoder) throws
+  }
+  public struct Italic : Swift.Codable, Swift.Equatable {
+    public let value: Swift.Bool?
+    public static func == (a: ExcelReader.Font.Italic, b: ExcelReader.Font.Italic) -> Swift.Bool
+    public func encode(to encoder: Swift.Encoder) throws
+    public init(from decoder: Swift.Decoder) throws
+  }
+  public struct Strike : Swift.Codable, Swift.Equatable {
+    public let value: Swift.Bool?
+    public static func == (a: ExcelReader.Font.Strike, b: ExcelReader.Font.Strike) -> Swift.Bool
+    public func encode(to encoder: Swift.Encoder) throws
+    public init(from decoder: Swift.Decoder) throws
+  }
+  public let size: ExcelReader.Font.Size?
+  public let color: ExcelReader.Color?
+  public let name: ExcelReader.Font.Name?
+  public let bold: ExcelReader.Font.Bold?
+  public let italic: ExcelReader.Font.Italic?
+  public let strike: ExcelReader.Font.Strike?
+  public static func == (a: ExcelReader.Font, b: ExcelReader.Font) -> Swift.Bool
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct Fills : Swift.Codable, Swift.Equatable {
+  public let items: [ExcelReader.Fill]
+  public let count: Swift.Int
+  public static func == (a: ExcelReader.Fills, b: ExcelReader.Fills) -> Swift.Bool
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct Fill : Swift.Codable, Swift.Equatable {
+  public let patternFill: ExcelReader.PatternFill
+  public static func == (a: ExcelReader.Fill, b: ExcelReader.Fill) -> Swift.Bool
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct PatternFill : Swift.Codable, Swift.Equatable {
+  public let patternType: Swift.String
+  public let foregroundColor: ExcelReader.Color?
+  public let backgroundColor: ExcelReader.Color?
+  public static func == (a: ExcelReader.PatternFill, b: ExcelReader.PatternFill) -> Swift.Bool
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct Borders : Swift.Codable, Swift.Equatable {
+  public let items: [ExcelReader.Border]
+  public let count: Swift.Int
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (a: ExcelReader.Borders, b: ExcelReader.Borders) -> Swift.Bool
+  public func encode(to encoder: Swift.Encoder) throws
+}
+public struct Border : Swift.Codable, Swift.Equatable {
+  public struct Value : Swift.Codable, Swift.Equatable {
+    public let color: ExcelReader.Color?
+    public let style: Swift.String?
+    public static func == (a: ExcelReader.Border.Value, b: ExcelReader.Border.Value) -> Swift.Bool
+    public func encode(to encoder: Swift.Encoder) throws
+    public init(from decoder: Swift.Decoder) throws
+  }
+  public let left: ExcelReader.Border.Value?
+  public let right: ExcelReader.Border.Value?
+  public let top: ExcelReader.Border.Value?
+  public let bottom: ExcelReader.Border.Value?
+  public let diagonal: ExcelReader.Border.Value?
+  public let horizontal: ExcelReader.Border.Value?
+  public let vertical: ExcelReader.Border.Value?
+  public static func == (a: ExcelReader.Border, b: ExcelReader.Border) -> Swift.Bool
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct CellStyleFormats : Swift.Codable, Swift.Equatable {
+  public let items: [ExcelReader.Format]
+  public let count: Swift.Int
+  public static func == (a: ExcelReader.CellStyleFormats, b: ExcelReader.CellStyleFormats) -> Swift.Bool
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct CellFormats : Swift.Codable, Swift.Equatable {
+  public let items: [ExcelReader.Format]
+  public let count: Swift.Int
+  public static func == (a: ExcelReader.CellFormats, b: ExcelReader.CellFormats) -> Swift.Bool
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct Format : Swift.Codable, Swift.Equatable {
+  public struct Alignment : Swift.Codable, Swift.Equatable {
+    public let vertical: Swift.String?
+    public let horizontal: Swift.String?
+    public let wrapText: Swift.Bool?
+    public static func == (a: ExcelReader.Format.Alignment, b: ExcelReader.Format.Alignment) -> Swift.Bool
+    public func encode(to encoder: Swift.Encoder) throws
+    public init(from decoder: Swift.Decoder) throws
+  }
+  public let numberFormatId: Swift.Int
+  public let borderId: Swift.Int?
+  public let fillId: Swift.Int?
+  public let fontId: Swift.Int
+  public let applyNumberFormat: Swift.Bool?
+  public let applyFont: Swift.Bool?
+  public let applyFill: Swift.Bool?
+  public let applyBorder: Swift.Bool?
+  public let applyAlignment: Swift.Bool?
+  public let applyProtection: Swift.Bool?
+  public let alignment: ExcelReader.Format.Alignment?
+  public static func == (a: ExcelReader.Format, b: ExcelReader.Format) -> Swift.Bool
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct CellStyles : Swift.Codable, Swift.Equatable {
+  public let items: [ExcelReader.CellStyle]
+  public let count: Swift.Int
+  public static func == (a: ExcelReader.CellStyles, b: ExcelReader.CellStyles) -> Swift.Bool
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct CellStyle : Swift.Codable, Swift.Equatable {
+  public let name: Swift.String
+  public let formatId: Swift.Int
+  public let builtinId: Swift.Int
+  public static func == (a: ExcelReader.CellStyle, b: ExcelReader.CellStyle) -> Swift.Bool
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct DifferentialFormats : Swift.Codable, Swift.Equatable {
+  public let items: [ExcelReader.Format]
+  public let count: Swift.Int
+  public static func == (a: ExcelReader.DifferentialFormats, b: ExcelReader.DifferentialFormats) -> Swift.Bool
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct TableStyles : Swift.Codable, Swift.Equatable {
+  public let count: Swift.Int
+  public let items: [ExcelReader.TableStyle]
+  public static func == (a: ExcelReader.TableStyles, b: ExcelReader.TableStyles) -> Swift.Bool
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct TableStyle : Swift.Codable, Swift.Equatable {
+  public struct Element : Swift.Codable, Swift.Equatable {
+    public let type: Swift.String
+    public static func == (a: ExcelReader.TableStyle.Element, b: ExcelReader.TableStyle.Element) -> Swift.Bool
+    public func encode(to encoder: Swift.Encoder) throws
+    public init(from decoder: Swift.Decoder) throws
+  }
+  public let pivot: Swift.Bool
+  public let name: Swift.String
+  public let count: Swift.Int
+  public let elements: [ExcelReader.TableStyle.Element]
+  public static func == (a: ExcelReader.TableStyle, b: ExcelReader.TableStyle) -> Swift.Bool
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct Colors : Swift.Codable, Swift.Equatable {
+  public struct Indexed : Swift.Codable, Swift.Equatable {
+    public let rgbColors: [ExcelReader.Color]
+    public static func == (a: ExcelReader.Colors.Indexed, b: ExcelReader.Colors.Indexed) -> Swift.Bool
+    public func encode(to encoder: Swift.Encoder) throws
+    public init(from decoder: Swift.Decoder) throws
+  }
+  public let indexed: ExcelReader.Colors.Indexed
+  public static func == (a: ExcelReader.Colors, b: ExcelReader.Colors) -> Swift.Bool
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+open class XMLEncoder {
+  public struct OutputFormatting : Swift.OptionSet {
+    public let rawValue: Swift.UInt
+    public init(rawValue: Swift.UInt)
+    public static let prettyPrinted: ExcelReader.XMLEncoder.OutputFormatting
+    public static let sortedKeys: ExcelReader.XMLEncoder.OutputFormatting
+    public typealias ArrayLiteralElement = ExcelReader.XMLEncoder.OutputFormatting
+    public typealias Element = ExcelReader.XMLEncoder.OutputFormatting
+    public typealias RawValue = Swift.UInt
+  }
+  public enum NodeEncoding {
+    case attribute
+    case element
+    case both
+    public static let `default`: ExcelReader.XMLEncoder.NodeEncoding
+    public static func == (a: ExcelReader.XMLEncoder.NodeEncoding, b: ExcelReader.XMLEncoder.NodeEncoding) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public enum DateEncodingStrategy {
+    case deferredToDate
+    case secondsSince1970
+    case millisecondsSince1970
+    @available(macOS 10.12, iOS 10.0, watchOS 3.0, tvOS 10.0, *)
+    case iso8601
+    case formatted(Foundation.DateFormatter)
+    case custom((Foundation.Date, Swift.Encoder) throws -> ())
+  }
+  public enum StringEncodingStrategy {
+    case deferredToString
+    case cdata
+    public static func == (a: ExcelReader.XMLEncoder.StringEncodingStrategy, b: ExcelReader.XMLEncoder.StringEncodingStrategy) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public enum DataEncodingStrategy {
+    case deferredToData
+    case base64
+    case custom((Foundation.Data, Swift.Encoder) throws -> ())
+  }
+  public enum NonConformingFloatEncodingStrategy {
+    case `throw`
+    case convertToString(positiveInfinity: Swift.String, negativeInfinity: Swift.String, nan: Swift.String)
+  }
+  public enum KeyEncodingStrategy {
+    case useDefaultKeys
+    case convertToSnakeCase
+    case convertToKebabCase
+    case capitalized
+    case uppercased
+    case lowercased
+    case custom((_ codingPath: [Swift.CodingKey]) -> Swift.CodingKey)
+  }
+  @available(*, deprecated, renamed: "NodeEncodingStrategy")
+  public typealias NodeEncodingStrategies = ExcelReader.XMLEncoder.NodeEncodingStrategy
+  public typealias XMLNodeEncoderClosure = ((Swift.CodingKey) -> ExcelReader.XMLEncoder.NodeEncoding)
+  public typealias XMLEncodingClosure = (Swift.Encodable.Type, Swift.Encoder) -> ExcelReader.XMLEncoder.XMLNodeEncoderClosure
+  public enum NodeEncodingStrategy {
+    case deferredToEncoder
+    case custom(ExcelReader.XMLEncoder.XMLEncodingClosure)
+  }
+  open var outputFormatting: ExcelReader.XMLEncoder.OutputFormatting
+  open var dateEncodingStrategy: ExcelReader.XMLEncoder.DateEncodingStrategy
+  open var dataEncodingStrategy: ExcelReader.XMLEncoder.DataEncodingStrategy
+  open var nonConformingFloatEncodingStrategy: ExcelReader.XMLEncoder.NonConformingFloatEncodingStrategy
+  open var keyEncodingStrategy: ExcelReader.XMLEncoder.KeyEncodingStrategy
+  open var nodeEncodingStrategy: ExcelReader.XMLEncoder.NodeEncodingStrategy
+  open var stringEncodingStrategy: ExcelReader.XMLEncoder.StringEncodingStrategy
+  open var userInfo: [Swift.CodingUserInfoKey : Any]
+  public init()
+  open func encode<T>(_ value: T, withRootKey rootKey: Swift.String? = nil, rootAttributes: [Swift.String : Swift.String]? = nil, header: ExcelReader.XMLHeader? = nil) throws -> Foundation.Data where T : Swift.Encodable
+  @objc deinit
+}
+extension Foundation.FileManager {
+  public func zipItem(at sourceURL: Foundation.URL, to destinationURL: Foundation.URL, shouldKeepParent: Swift.Bool = true, compressionMethod: ExcelReader.CompressionMethod = .none, progress: Foundation.Progress? = nil) throws
+  public func unzipItem(at sourceURL: Foundation.URL, to destinationURL: Foundation.URL, skipCRC32: Swift.Bool = false, progress: Foundation.Progress? = nil, preferredEncoding: Swift.String.Encoding? = nil) throws
+}
+extension Foundation.URL {
+  public func isContained(in parentDirectoryURL: Foundation.URL) -> Swift.Bool
+}
+extension ExcelReader.Archive {
+  final public func addEntry(with path: Swift.String, relativeTo baseURL: Foundation.URL, compressionMethod: ExcelReader.CompressionMethod = .none, bufferSize: Swift.UInt32 = defaultWriteChunkSize, progress: Foundation.Progress? = nil) throws
+  final public func addEntry(with path: Swift.String, type: ExcelReader.Entry.EntryType, uncompressedSize: Swift.UInt32, modificationDate: Foundation.Date = Date(), permissions: Swift.UInt16? = nil, compressionMethod: ExcelReader.CompressionMethod = .none, bufferSize: Swift.UInt32 = defaultWriteChunkSize, progress: Foundation.Progress? = nil, provider: (_ position: Swift.Int, _ size: Swift.Int) throws -> Foundation.Data) throws
+  final public func remove(_ entry: ExcelReader.Entry, bufferSize: Swift.UInt32 = defaultReadChunkSize, progress: Foundation.Progress? = nil) throws
+}
+public typealias CRC32 = Swift.UInt32
+public typealias Consumer = (_ data: Foundation.Data) throws -> Swift.Void
+public typealias Provider = (_ position: Swift.Int, _ size: Swift.Int) throws -> Foundation.Data
+public let crcTable: [Swift.UInt32]
+extension Foundation.Data {
+  public func crc32(checksum: ExcelReader.CRC32) -> ExcelReader.CRC32
+  public static func compress(size: Swift.Int, bufferSize: Swift.Int, provider: (_ position: Swift.Int, _ size: Swift.Int) throws -> Foundation.Data, consumer: (_ data: Foundation.Data) throws -> Swift.Void) throws -> ExcelReader.CRC32
+  public static func decompress(size: Swift.Int, bufferSize: Swift.Int, skipCRC32: Swift.Bool, provider: (_ position: Swift.Int, _ size: Swift.Int) throws -> Foundation.Data, consumer: (_ data: Foundation.Data) throws -> Swift.Void) throws -> ExcelReader.CRC32
+}
+extension ExcelReader.Archive {
+  final public var data: Foundation.Data? {
+    get
+  }
+}
+public struct Comments : Swift.Codable, Swift.Equatable {
+  public let commentList: ExcelReader.CommentList
+  public static func == (a: ExcelReader.Comments, b: ExcelReader.Comments) -> Swift.Bool
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct CommentList : Swift.Codable, Swift.Equatable {
+  public let items: [ExcelReader.Comment]
+  public var itemsByReference: [Swift.String : ExcelReader.Comment] {
+    get
+  }
+  public static func == (a: ExcelReader.CommentList, b: ExcelReader.CommentList) -> Swift.Bool
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct Comment : Swift.Codable, Swift.Equatable {
+  public let reference: Swift.String
+  public let text: ExcelReader.Text
+  public static func == (a: ExcelReader.Comment, b: ExcelReader.Comment) -> Swift.Bool
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct Text : Swift.Codable, Swift.Equatable {
+  public let plain: Swift.String?
+  public static func == (a: ExcelReader.Text, b: ExcelReader.Text) -> Swift.Bool
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct CellReference {
+  public let column: ExcelReader.ColumnReference
+  public let row: Swift.UInt
+  public init(_ column: ExcelReader.ColumnReference, _ row: Swift.UInt)
+}
+extension ExcelReader.CellReference : Swift.Equatable {
+  public static func == (lhs: ExcelReader.CellReference, rhs: ExcelReader.CellReference) -> Swift.Bool
+}
+extension ExcelReader.CellReference : Swift.CustomStringConvertible {
+  public var description: Swift.String {
+    get
+  }
+}
+extension ExcelReader.CellReference : Swift.Decodable {
+  public init(from decoder: Swift.Decoder) throws
+}
+extension ExcelReader.CellReference : Swift.Encodable {
+  public func encode(to encoder: Swift.Encoder) throws
+}
+@available(*, deprecated, renamed: "Worksheet.Data")
+public typealias SheetData = ExcelReader.Worksheet.Data
+@available(*, deprecated, renamed: "Worksheet.Properties")
+public typealias SheetPr = ExcelReader.Worksheet.Properties
+@available(*, deprecated, renamed: "Worksheet.FormatProperties")
+public typealias SheetFormatPr = ExcelReader.Worksheet.FormatProperties
+@available(*, deprecated, renamed: "Worksheet.Dimension")
+public typealias WorksheetDimension = ExcelReader.Worksheet.Dimension
+public struct Worksheet : Swift.Codable {
+  public struct Properties : Swift.Codable, Swift.Equatable {
+    public let pageSetUpProperties: ExcelReader.PageSetUpProperties?
+    public static func == (a: ExcelReader.Worksheet.Properties, b: ExcelReader.Worksheet.Properties) -> Swift.Bool
+    public func encode(to encoder: Swift.Encoder) throws
+    public init(from decoder: Swift.Decoder) throws
+  }
+  public struct Data : Swift.Codable {
+    public let rows: [ExcelReader.Row]
+    public func encode(to encoder: Swift.Encoder) throws
+    public init(from decoder: Swift.Decoder) throws
+  }
+  public struct FormatProperties : Swift.Codable, Swift.Equatable {
+    @available(*, deprecated, renamed: "defaultColumnWidth")
+    public var defaultColWidth: Swift.String? {
+      get
+    }
+    public let defaultColumnWidth: Swift.String?
+    public let defaultRowHeight: Swift.String?
+    public let customHeight: Swift.String?
+    public let outlineLevelRow: Swift.String?
+    @available(*, deprecated, renamed: "outlineLevelColumn")
+    public var outlineLevelCol: Swift.String? {
+      get
+    }
+    public let outlineLevelColumn: Swift.String?
+    public static func == (a: ExcelReader.Worksheet.FormatProperties, b: ExcelReader.Worksheet.FormatProperties) -> Swift.Bool
+    public func encode(to encoder: Swift.Encoder) throws
+    public init(from decoder: Swift.Decoder) throws
+  }
+  @available(*, deprecated, renamed: "properties")
+  public var sheetPr: ExcelReader.SheetPr? {
+    get
+  }
+  public let properties: ExcelReader.Worksheet.Properties?
+  public struct Dimension : Swift.Codable {
+    @available(*, deprecated, renamed: "reference")
+    public var ref: Swift.String {
+      get
+    }
+    public let reference: Swift.String
+    public func encode(to encoder: Swift.Encoder) throws
+    public init(from decoder: Swift.Decoder) throws
+  }
+  public let dimension: ExcelReader.Worksheet.Dimension?
+  public let sheetViews: ExcelReader.SheetViews?
+  @available(*, deprecated, renamed: "formatProperties")
+  public var sheetFormatPr: ExcelReader.SheetFormatPr {
+    get
+  }
+  public let formatProperties: ExcelReader.Worksheet.FormatProperties?
+  public let columns: ExcelReader.Columns?
+  @available(*, deprecated, renamed: "columns")
+  public var cols: ExcelReader.Cols? {
+    get
+  }
+  public let data: ExcelReader.Worksheet.Data?
+  @available(*, deprecated, renamed: "data")
+  public var sheetData: ExcelReader.SheetData {
+    get
+  }
+  public let mergeCells: ExcelReader.MergeCells?
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct PageSetUpProperties : Swift.Codable, Swift.Equatable {
+  public let fitToPage: Swift.Bool?
+  public let autoPageBreaks: Swift.Bool?
+  public static func == (a: ExcelReader.PageSetUpProperties, b: ExcelReader.PageSetUpProperties) -> Swift.Bool
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct SheetViews : Swift.Codable {
+  public let items: [ExcelReader.SheetView]
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct SheetView : Swift.Codable {
+  public let workbookViewId: Swift.String
+  public let showGridLines: Swift.Bool?
+  public let defaultGridColor: Swift.String?
+  public let pane: ExcelReader.Pane?
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct Pane : Swift.Codable {
+  public let topLeftCell: Swift.String?
+  public let xSplit: Swift.String?
+  public let ySplit: Swift.String?
+  public let activePane: Swift.String?
+  public let state: Swift.String?
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+@available(*, deprecated, renamed: "Columns")
+public typealias Cols = ExcelReader.Columns
+public struct Columns : Swift.Codable, Swift.Equatable {
+  public let items: [ExcelReader.Column]
+  public static func == (a: ExcelReader.Columns, b: ExcelReader.Columns) -> Swift.Bool
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+@available(*, deprecated, renamed: "Column")
+public typealias Col = ExcelReader.Column
+public struct Column : Swift.Codable, Swift.Equatable {
+  public let min: Swift.Int
+  public let max: Swift.Int
+  public let width: Swift.Double
+  public let style: Swift.UInt32?
+  public let customWidth: Swift.Bool?
+  public static func == (a: ExcelReader.Column, b: ExcelReader.Column) -> Swift.Bool
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct Row : Swift.Codable {
+  public let reference: Swift.UInt
+  @available(*, deprecated, renamed: "height")
+  public var ht: Swift.String? {
+    get
+  }
+  public let height: Swift.Double?
+  public let customHeight: Swift.String?
+  public let cells: [ExcelReader.Cell]
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct MergeCells : Swift.Codable {
+  public let count: Swift.Int?
+  public let items: [ExcelReader.MergeCell]
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct MergeCell : Swift.Codable {
+  public let reference: Swift.String
+  @available(*, deprecated, renamed: "reference")
+  public var ref: Swift.String {
+    get
+  }
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct InlineString : Swift.Codable, Swift.Equatable {
+  public let text: Swift.String?
+  public static func == (a: ExcelReader.InlineString, b: ExcelReader.InlineString) -> Swift.Bool
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+open class XMLDecoder {
+  public enum DateDecodingStrategy {
+    case deferredToDate
+    case secondsSince1970
+    case millisecondsSince1970
+    @available(macOS 10.12, iOS 10.0, watchOS 3.0, tvOS 10.0, *)
+    case iso8601
+    case formatted(Foundation.DateFormatter)
+    case custom((_ decoder: Swift.Decoder) throws -> Foundation.Date)
+  }
+  public enum DataDecodingStrategy {
+    case deferredToData
+    case base64
+    case custom((_ decoder: Swift.Decoder) throws -> Foundation.Data)
+  }
+  public enum NonConformingFloatDecodingStrategy {
+    case `throw`
+    case convertFromString(positiveInfinity: Swift.String, negativeInfinity: Swift.String, nan: Swift.String)
+  }
+  public enum KeyDecodingStrategy {
+    case useDefaultKeys
+    case convertFromSnakeCase
+    case convertFromKebabCase
+    case convertFromCapitalized
+    case custom((_ codingPath: [Swift.CodingKey]) -> Swift.CodingKey)
+  }
+  open var dateDecodingStrategy: ExcelReader.XMLDecoder.DateDecodingStrategy
+  open var dataDecodingStrategy: ExcelReader.XMLDecoder.DataDecodingStrategy
+  open var nonConformingFloatDecodingStrategy: ExcelReader.XMLDecoder.NonConformingFloatDecodingStrategy
+  open var keyDecodingStrategy: ExcelReader.XMLDecoder.KeyDecodingStrategy
+  public enum NodeDecoding {
+    case attribute
+    case element
+    case elementOrAttribute
+    public static func == (a: ExcelReader.XMLDecoder.NodeDecoding, b: ExcelReader.XMLDecoder.NodeDecoding) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  open var nodeDecodingStrategy: ExcelReader.XMLDecoder.NodeDecodingStrategy
+  public enum NodeDecodingStrategy {
+    case deferredToDecoder
+    case custom((Swift.Decodable.Type, Swift.Decoder) -> ((Swift.CodingKey) -> ExcelReader.XMLDecoder.NodeDecoding))
+  }
+  open var userInfo: [Swift.CodingUserInfoKey : Any]
+  open var errorContextLength: Swift.UInt
+  open var shouldProcessNamespaces: Swift.Bool
+  open var trimValueWhitespaces: Swift.Bool
+  public init(trimValueWhitespaces: Swift.Bool = true)
+  open func decode<T>(_ type: T.Type, from data: Foundation.Data) throws -> T where T : Swift.Decodable
+  @objc deinit
+}
+extension ExcelReader.XMLDecoder : Combine.TopLevelDecoder {
+  public typealias Input = Foundation.Data
+}
+extension ExcelReader.XMLEncoder : Combine.TopLevelEncoder {
+  public func encode<T>(_ value: T) throws -> Foundation.Data where T : Swift.Encodable
+  public typealias Output = Foundation.Data
+}
+public struct SharedStrings : Swift.Codable, Swift.Equatable {
+  public struct Item : Swift.Codable, Swift.Equatable {
+    public let text: Swift.String?
+    public let richText: [ExcelReader.RichText]
+    public static func == (a: ExcelReader.SharedStrings.Item, b: ExcelReader.SharedStrings.Item) -> Swift.Bool
+    public func encode(to encoder: Swift.Encoder) throws
+    public init(from decoder: Swift.Decoder) throws
+  }
+  public let uniqueCount: Swift.UInt?
+  public let items: [ExcelReader.SharedStrings.Item]
+  public static func == (a: ExcelReader.SharedStrings, b: ExcelReader.SharedStrings) -> Swift.Bool
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct RichText : Swift.Codable, Swift.Equatable {
+  public struct Family : Swift.Codable, Swift.Equatable {
+    public let value: Swift.String
+    public static func == (a: ExcelReader.RichText.Family, b: ExcelReader.RichText.Family) -> Swift.Bool
+    public func encode(to encoder: Swift.Encoder) throws
+    public init(from decoder: Swift.Decoder) throws
+  }
+  public struct Scheme : Swift.Codable, Swift.Equatable {
+    public let value: Swift.String
+    public static func == (a: ExcelReader.RichText.Scheme, b: ExcelReader.RichText.Scheme) -> Swift.Bool
+    public func encode(to encoder: Swift.Encoder) throws
+    public init(from decoder: Swift.Decoder) throws
+  }
+  public struct Size : Swift.Codable, Swift.Equatable {
+    public let value: Swift.String
+    public static func == (a: ExcelReader.RichText.Size, b: ExcelReader.RichText.Size) -> Swift.Bool
+    public func encode(to encoder: Swift.Encoder) throws
+    public init(from decoder: Swift.Decoder) throws
+  }
+  public struct Color : Swift.Codable, Swift.Equatable {
+    public static func == (a: ExcelReader.RichText.Color, b: ExcelReader.RichText.Color) -> Swift.Bool
+    public func encode(to encoder: Swift.Encoder) throws
+    public init(from decoder: Swift.Decoder) throws
+  }
+  public struct Font : Swift.Codable, Swift.Equatable {
+    public let value: Swift.String
+    public static func == (a: ExcelReader.RichText.Font, b: ExcelReader.RichText.Font) -> Swift.Bool
+    public func encode(to encoder: Swift.Encoder) throws
+    public init(from decoder: Swift.Decoder) throws
+  }
+  public struct Properties : Swift.Codable, Swift.Equatable {
+    public let size: ExcelReader.RichText.Size?
+    public let color: ExcelReader.RichText.Color?
+    public let font: ExcelReader.RichText.Font?
+    public let family: ExcelReader.RichText.Family?
+    public let scheme: ExcelReader.RichText.Scheme?
+    public static func == (a: ExcelReader.RichText.Properties, b: ExcelReader.RichText.Properties) -> Swift.Bool
+    public func encode(to encoder: Swift.Encoder) throws
+    public init(from decoder: Swift.Decoder) throws
+  }
+  public let properties: ExcelReader.RichText.Properties?
+  public let text: Swift.String?
+  public static func == (a: ExcelReader.RichText, b: ExcelReader.RichText) -> Swift.Bool
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+@available(*, deprecated, renamed: "CoreXLSXError")
+public typealias XLSXReaderError = ExcelReader.CoreXLSXError
+public enum CoreXLSXError : Swift.Error {
+  case dataIsNotAnArchive
+  case archiveEntryNotFound
+  case invalidCellReference
+  case unsupportedWorksheetPath
+  public static func == (a: ExcelReader.CoreXLSXError, b: ExcelReader.CoreXLSXError) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public class XLSXFile {
+  public init?(filepath: Swift.String, bufferSize: Swift.UInt32 = 10 * 1024 * 1024, errorContextLength: Swift.UInt = 0)
+  public init(data: Foundation.Data, bufferSize: Swift.UInt32 = 10 * 1024 * 1024, errorContextLength: Swift.UInt = 0) throws
+  public func parseRelationships() throws -> ExcelReader.Relationships
+  public func parseDocumentPaths() throws -> [Swift.String]
+  public func parseStyles() throws -> ExcelReader.Styles
+  public func parseSharedStrings() throws -> ExcelReader.SharedStrings?
+  public func parseComments(forWorksheet path: Swift.String) throws -> ExcelReader.Comments
+  public func parseWorkbooks() throws -> [ExcelReader.Workbook]
+  @available(*, deprecated, renamed: "parseDocumentRelationships(path:)")
+  public func parseDocumentRelationships() throws -> [([Swift.Substring], ExcelReader.Relationships)]
+  public func parseDocumentRelationships(path: Swift.String) throws -> (ExcelReader.Path, ExcelReader.Relationships)
+  public func parseWorksheetPathsAndNames(workbook: ExcelReader.Workbook) throws -> [(name: Swift.String?, path: Swift.String)]
+  public func parseWorksheetPaths() throws -> [Swift.String]
+  public func parseWorksheet(at path: Swift.String) throws -> ExcelReader.Worksheet
+  @available(*, deprecated, renamed: "Worksheet.cells(atRows:)")
+  public func cellsInWorksheet(at path: Swift.String, rows: [Swift.Int]) throws -> [ExcelReader.Cell]
+  @available(*, deprecated, renamed: "Worksheet.cells(atColumns:)")
+  public func cellsInWorksheet(at path: Swift.String, columns: [Swift.String]) throws -> [ExcelReader.Cell]
+  @objc deinit
+}
+public struct ColumnReference {
+  public let value: Swift.String
+  public init?(_ value: Swift.String)
+  public init?(_ value: Swift.Substring)
+}
+extension ExcelReader.ColumnReference : Swift.CustomStringConvertible {
+  public var description: Swift.String {
+    get
+  }
+}
+extension ExcelReader.ColumnReference : Swift.Comparable {
+  public static func < (lhs: ExcelReader.ColumnReference, rhs: ExcelReader.ColumnReference) -> Swift.Bool
+  public static func == (lhs: ExcelReader.ColumnReference, rhs: ExcelReader.ColumnReference) -> Swift.Bool
+}
+extension ExcelReader.ColumnReference : Swift.Strideable {
+  public func distance(to target: ExcelReader.ColumnReference) -> Swift.Int
+  public func advanced(by offset: Swift.Int) -> ExcelReader.ColumnReference
+  public typealias Stride = Swift.Int
+}
+public enum CellType : Swift.String, Swift.Codable {
+  case bool
+  case date
+  case number
+  case error
+  case sharedString
+  case string
+  case inlineStr
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public struct Cell : Swift.Codable, Swift.Equatable {
+  public let reference: ExcelReader.CellReference
+  public let type: ExcelReader.CellType?
+  public let styleIndex: Swift.Int?
+  public let inlineString: ExcelReader.InlineString?
+  public let formula: ExcelReader.Cell.Formula?
+  public let value: Swift.String?
+  public struct Formula : Swift.Codable, Swift.Equatable {
+    public let calculationIndex: Swift.Int?
+    public let value: Swift.String?
+    public static func == (a: ExcelReader.Cell.Formula, b: ExcelReader.Cell.Formula) -> Swift.Bool
+    public func encode(to encoder: Swift.Encoder) throws
+    public init(from decoder: Swift.Decoder) throws
+  }
+  public static func == (a: ExcelReader.Cell, b: ExcelReader.Cell) -> Swift.Bool
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public protocol DynamicNodeDecoding : Swift.Decodable {
+  static func nodeDecoding(for key: Swift.CodingKey) -> ExcelReader.XMLDecoder.NodeDecoding
+}
+public struct Workbook : Swift.Codable, Swift.Equatable {
+  public struct Views : Swift.Codable, Swift.Equatable {
+    public let items: [ExcelReader.Workbook.View]
+    public static func == (a: ExcelReader.Workbook.Views, b: ExcelReader.Workbook.Views) -> Swift.Bool
+    public func encode(to encoder: Swift.Encoder) throws
+    public init(from decoder: Swift.Decoder) throws
+  }
+  public struct View : Swift.Codable, Swift.Equatable {
+    public let xWindow: Swift.Int?
+    public let yWindow: Swift.Int?
+    public let windowWidth: Swift.UInt?
+    public let windowHeight: Swift.UInt?
+    public static func == (a: ExcelReader.Workbook.View, b: ExcelReader.Workbook.View) -> Swift.Bool
+    public func encode(to encoder: Swift.Encoder) throws
+    public init(from decoder: Swift.Decoder) throws
+  }
+  public let views: ExcelReader.Workbook.Views?
+  public struct Sheets : Swift.Codable, Swift.Equatable {
+    public let items: [ExcelReader.Workbook.Sheet]
+    public static func == (a: ExcelReader.Workbook.Sheets, b: ExcelReader.Workbook.Sheets) -> Swift.Bool
+    public func encode(to encoder: Swift.Encoder) throws
+    public init(from decoder: Swift.Decoder) throws
+  }
+  public struct Sheet : Swift.Codable, Swift.Equatable {
+    public let name: Swift.String?
+    public let id: Swift.String
+    public let relationship: Swift.String
+    public static func == (a: ExcelReader.Workbook.Sheet, b: ExcelReader.Workbook.Sheet) -> Swift.Bool
+    public func encode(to encoder: Swift.Encoder) throws
+    public init(from decoder: Swift.Decoder) throws
+  }
+  public let sheets: ExcelReader.Workbook.Sheets
+  public static func == (a: ExcelReader.Workbook, b: ExcelReader.Workbook) -> Swift.Bool
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+extension ExcelReader.CompressionMethod : Swift.Equatable {}
+extension ExcelReader.CompressionMethod : Swift.Hashable {}
+extension ExcelReader.CompressionMethod : Swift.RawRepresentable {}
+extension ExcelReader.Archive.ArchiveError : Swift.Equatable {}
+extension ExcelReader.Archive.ArchiveError : Swift.Hashable {}
+extension ExcelReader.Archive.AccessMode : Swift.Equatable {}
+extension ExcelReader.Archive.AccessMode : Swift.Hashable {}
+extension ExcelReader.Archive.AccessMode : Swift.RawRepresentable {}
+extension ExcelReader.Entry.EntryType : Swift.Equatable {}
+extension ExcelReader.Entry.EntryType : Swift.Hashable {}
+extension ExcelReader.Entry.EntryType : Swift.RawRepresentable {}
+extension ExcelReader.Relationship.SchemaType : Swift.Equatable {}
+extension ExcelReader.Relationship.SchemaType : Swift.Hashable {}
+extension ExcelReader.Relationship.SchemaType : Swift.RawRepresentable {}
+extension ExcelReader.XMLEncoder.NodeEncoding : Swift.Equatable {}
+extension ExcelReader.XMLEncoder.NodeEncoding : Swift.Hashable {}
+extension ExcelReader.XMLEncoder.StringEncodingStrategy : Swift.Equatable {}
+extension ExcelReader.XMLEncoder.StringEncodingStrategy : Swift.Hashable {}
+extension ExcelReader.XMLDecoder.NodeDecoding : Swift.Equatable {}
+extension ExcelReader.XMLDecoder.NodeDecoding : Swift.Hashable {}
+extension ExcelReader.CoreXLSXError : Swift.Equatable {}
+extension ExcelReader.CoreXLSXError : Swift.Hashable {}
+extension ExcelReader.CellType : Swift.Equatable {}
+extension ExcelReader.CellType : Swift.Hashable {}
+extension ExcelReader.CellType : Swift.RawRepresentable {}
